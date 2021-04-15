@@ -1,0 +1,44 @@
+## The Sum of 2 constant integer is displayed
+## Use the procedure sum
+.data
+x1: .word 10
+x2: .word -8
+msg1: .asciiz "x1 + x2 = "
+
+.text
+# read first value from keyboard to $t0
+li $v0, 5
+syscall
+move $t0, $v0
+# read first value from keyboard t0 $t1
+li $v0, 5
+syscall
+move $t1, $v0
+# sum entered values using sum_int procedure
+    add $a0,$0,$t0   # it's same function as move the value
+    add $a1,$0,$t1 
+    jal sum      # call procedure
+    add $t2,$0,$v0   # move the return value from $v0 to where we want
+# print string with a message1
+li $v0, 4
+la $a0, msg1
+syscall
+# print sum result 
+li $v0, 1
+move $a0, $t2
+syscall
+# execution terminated with success
+li $v0, 10
+syscall
+
+# Procedure sum
+sum:
+    addi $sp,$sp,-4     # Moveing Stack pointer
+    sw $t0, 0($sp)      # Store previous value
+
+    add $t0,$a0,$a1     # Procedure Body
+    add $v0,$0,$t0      # Result
+
+    lw $t0, 0($sp)      # Load previous value
+    addi $sp,$sp,4      # Moveing Stack pointer 
+    jr $ra              # return (Copy $ra to PC)

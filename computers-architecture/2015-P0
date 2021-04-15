@@ -1,0 +1,17 @@
+## The Sum of 2 constant integer is displayed
+.data
+.text
+# load immediate operands
+addi $t0, $zero, 20
+#You can produce the same result with the following 
+#assembly MIPS instructions 
+# <li $t0, 20>  <addiu $t0, $0, 20> <add $t0, $zero, 20>
+addi $9, $zero, 32767
+#Try <addi $9, $zero, 32767> <addi $9, $zero, 32768> <addi $9, $zero, 2147483647>
+# sum entered values
+addu $t2, $t1, $t0
+#Try these bitwise logical operations bit-to-bit. Observe the register values
+and $t3, $t1, $t0
+or $t4, $t1, $t0
+nor $t5, $t1, $t0
+xor $t6, $t1, $t0
