@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/TabelaHash.dir/main.c.o CMakeFiles/TabelaHash.dir/hash.c.o  -o TabelaHash 

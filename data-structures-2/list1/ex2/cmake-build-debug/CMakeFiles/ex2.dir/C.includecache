@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lenke/dev/ufes/fac-ed2/lista1/ex2/josefo.c
+stdio.h
+-
+josefo.h
+/home/lenke/dev/ufes/fac-ed2/lista1/ex2/josefo.h
+lista.h
+/home/lenke/dev/ufes/fac-ed2/lista1/ex2/lista.h
+
+/home/lenke/dev/ufes/fac-ed2/lista1/ex2/josefo.h
+lista.h
+/home/lenke/dev/ufes/fac-ed2/lista1/ex2/lista.h
+
+/home/lenke/dev/ufes/fac-ed2/lista1/ex2/lista.h
+

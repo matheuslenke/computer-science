@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/Arvore_expressoes/arv_exp.c
+arv_exp.h
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/Arvore_expressoes/arv_exp.h
+stdio.h
+-
+stdlib.h
+-
+
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/Arvore_expressoes/arv_exp.h
+
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/Arvore_expressoes/main.c
+stdio.h
+-
+arv_exp.h
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/Arvore_expressoes/arv_exp.h
+

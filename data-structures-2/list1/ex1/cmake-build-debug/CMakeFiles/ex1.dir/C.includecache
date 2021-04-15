@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/bitmap.h
+
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/main.c
+stdio.h
+-
+primeNumber.h
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/primeNumber.h
+primeNumberInt.h
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/primeNumberInt.h
+primeNumberBool.h
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/primeNumberBool.h
+primeNumberBit.h
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/primeNumberBit.h
+bitmap.h
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/bitmap.h
+
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/primeNumber.h
+
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/primeNumberBit.h
+stdbool.h
+-
+bitmap.h
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/bitmap.h
+
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/primeNumberBool.h
+stdbool.h
+-
+
+/home/lenke/dev/ufes/fac-ed2/lista1/ex1/primeNumberInt.h
+

@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/ex1.dir/main.c.o CMakeFiles/ex1.dir/primeNumber.c.o CMakeFiles/ex1.dir/primeNumberInt.c.o CMakeFiles/ex1.dir/primeNumberBool.c.o CMakeFiles/ex1.dir/primeNumberBit.c.o CMakeFiles/ex1.dir/bitmap.c.o  -o ex1 

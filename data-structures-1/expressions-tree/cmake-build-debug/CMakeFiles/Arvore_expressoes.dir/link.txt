@@ -1,0 +1,2 @@
+/usr/bin/ar qc libArvore_expressoes.a  CMakeFiles/Arvore_expressoes.dir/arv_exp.c.o CMakeFiles/Arvore_expressoes.dir/main.c.o
+/usr/bin/ranlib libArvore_expressoes.a

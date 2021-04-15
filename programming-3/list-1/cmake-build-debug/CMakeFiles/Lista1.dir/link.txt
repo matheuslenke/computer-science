@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/Lista1.dir/main.c.o CMakeFiles/Lista1.dir/alunos.c.o  -o Lista1 

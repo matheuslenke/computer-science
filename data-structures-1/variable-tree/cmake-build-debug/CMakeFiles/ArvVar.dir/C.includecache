@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/ArvVar/arvvar.h
+
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/ArvVar/main.c
+stdio.h
+-
+arvvar.h
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/ArvVar/arvvar.h
+

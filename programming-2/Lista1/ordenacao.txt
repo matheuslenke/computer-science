@@ -1,0 +1,25 @@
+//ordenacao generica
+void ordena(tPais *pais, int cmp(tPais, tPais), int tam){
+    tPais aux;
+    for(int i=0; i < tam; i++){
+        for(int j=0; j < tam-i-1;j++){
+            if(cmp(pais[j], pais[j+1])){
+                aux = pais[j];
+                pais[j] = pais[j+1];
+                pais[j+1] = aux;
+            }
+        }
+    }
+}
+
+//funcao que da o parametro pra ordenacao
+int cmpOuro(tPais pais1, tPais pais2){
+    return pais1.ouro < pais2.ouro; 
+}
+
+//Chamar na main (ou em outra funcao)
+int main(){
+    ...
+    ordena(paises, cmpOuro, tam);
+    ...
+}

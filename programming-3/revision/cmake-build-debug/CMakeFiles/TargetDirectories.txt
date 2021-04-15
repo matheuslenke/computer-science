@@ -1,0 +1,3 @@
+/home/lenke/dev/ufes/prog3/revisao/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/lenke/dev/ufes/prog3/revisao/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/lenke/dev/ufes/prog3/revisao/cmake-build-debug/CMakeFiles/revisao.dir

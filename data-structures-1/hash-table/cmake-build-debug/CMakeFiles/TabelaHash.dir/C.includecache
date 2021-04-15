@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/TabelaHash/hash.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+ctype.h
+-
+hash.h
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/TabelaHash/hash.h
+
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/TabelaHash/hash.h
+
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/TabelaHash/main.c
+stdio.h
+-
+hash.h
+/home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/TabelaHash/hash.h
+

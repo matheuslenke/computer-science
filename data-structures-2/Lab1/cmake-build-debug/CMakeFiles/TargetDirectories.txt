@@ -1,0 +1,3 @@
+/home/mlcoutinho/Área de Trabalho/Estrutura-de-dados-II/Lab1/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/mlcoutinho/Área de Trabalho/Estrutura-de-dados-II/Lab1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/mlcoutinho/Área de Trabalho/Estrutura-de-dados-II/Lab1/cmake-build-debug/CMakeFiles/Lab1.dir

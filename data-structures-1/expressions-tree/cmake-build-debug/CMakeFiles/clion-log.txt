@@ -1,0 +1,4 @@
+/opt/jetbrains/pro/clion/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/Arvore_expressoes
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/2019202297/Documentos/Estudos/Estruturas-de-dados-1/Arvore_expressoes/cmake-build-debug

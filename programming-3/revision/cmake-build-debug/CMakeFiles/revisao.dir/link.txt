@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/revisao.dir/main.c.o CMakeFiles/revisao.dir/tAluno.c.o  -o revisao 

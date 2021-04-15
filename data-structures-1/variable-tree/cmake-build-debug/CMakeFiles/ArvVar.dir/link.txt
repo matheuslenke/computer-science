@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/ArvVar.dir/main.c.o CMakeFiles/ArvVar.dir/arvvar.c.o  -o ArvVar 
