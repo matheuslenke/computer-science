@@ -19,7 +19,8 @@ int main() {
   int size = 1024 ;
   char *path="./" ;
   //char *path="./" ;
-  char *mem ;
+  char *stringlida;
+  unsigned int *endereco;
   int flag = 0 ;
 
 /* recuperação do shmid */
@@ -31,12 +32,15 @@ int main() {
   printf("Este segmento e associado a chave unica: %d\n",
   ftok(path,ADDKEY)) ;
 /* acoplamento do processo ao segmento de memória */
-  if ((mem = shmat (shmid, 0, flag)) == (char*)-1){
+  if ((endereco = shmat (shmid, 0, flag)) == (char*)-1){
        perror("acoplamento impossivel") ;
        exit (1) ;}
 /* tratamento do conteúdo do segmento */
   printf("leitura do segmento de memória compartilhada:\n");
-  printf("\t==>%s\n",mem) ;
+   printf("\tcomo int==>%d\n", endereco) ;
+   printf("\tcomo x==>%x\n", endereco) ;
+   printf("\tendereco==>%u\n", &endereco) ;
+  printf("\tstring lida ==>%s\n", endereco) ;
   sleep(1000);
   exit(0);
 }

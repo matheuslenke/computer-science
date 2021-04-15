@@ -19,7 +19,8 @@ int main() {
   int size = 1024 ;
   char *path="./" ;
   //char *path="./" ;
-  char *mem ;
+  unsigned int *endereco;
+  char* stringlida;
   int flag = 0;
 /* recuperacao do shmid */
   if ((shmid = shmget(ftok(path,ADDKEY), size,0)) == -1) {
@@ -29,12 +30,17 @@ int main() {
   printf("Identificador do segmento recuperado: %d \n",shmid) ;
   printf("Este segmento e associado a chave unica: %d\n",ftok(path,ADDKEY)) ;
 /* acoplamento do processo a zona de memoria */
-  if ((mem = shmat (shmid, 0, flag)) == (char*)-1){
+  if ((endereco = shmat (shmid, 0, flag)) == (char*)-1){
        perror("acoplamento impossivel") ;
        exit (1) ; }
 /* escrita na zona de memoria compartilhada */
-  printf("Endereço: %s\n", mem);
-  strcpy(mem,MSG);
+  // printf("Endereço: %s\n", mem);
+    printf("shmat.c\n");
+    printf("\tcomo int==>%u\n", endereco) ;
+   printf("\tcomo x==>%x\n", endereco) ;
+   printf("\tendereço==>%u\n", &endereco) ;
+  strcpy(endereco,MSG);
+  // printf("\tstring ==>%s\n",mem);
   sleep(100);
   exit(0);
 }
