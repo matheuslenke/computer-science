@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "gson-exercise-app"
+		},
+		{
+			"path": "covidCharts"
+		},
+		{
+			"path": "covidbrazil"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
+}
