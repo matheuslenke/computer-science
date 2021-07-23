@@ -1,7 +1,6 @@
 package com.mycompany.app;
 
 import java.io.*;
-import java.net.ProtocolException;
 import java.util.Map;
 import java.lang.reflect.Type;
 import java.net.URL;
