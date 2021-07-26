@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="178.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufes.inf.nemo.agendajavafx.AgendaAppController">
+   <children>
+      <TextField fx:id="nomeTextField" layoutX="25.0" layoutY="49.0" onAction="#handleEnterNomeTextField" prefHeight="26.0" prefWidth="294.0" promptText="Nome..." AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="49.0" />
+      <TextField fx:id="telefoneTextField" layoutX="25.0" layoutY="89.0" onAction="#handlePost" prefHeight="26.0" prefWidth="294.0" promptText="Telefone..." AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="89.0" />
+      <ButtonBar layoutX="119.0" layoutY="124.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.rightAnchor="25.0">
+        <buttons>
+          <Button mnemonicParsing="false" onAction="#handleCloseNew" text="Cancela" />
+            <Button mnemonicParsing="false" onAction="#handlePost" text="Confirma" />
+        </buttons>
+      </ButtonBar>
+      <Label focusTraversable="false" layoutX="25.0" layoutY="22.0" text="Novo Contato:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="22.0" />
+   </children>
+</AnchorPane>
