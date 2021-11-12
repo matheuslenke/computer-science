@@ -16,8 +16,9 @@ float size = 1.0;
 
 // vector <GLfloat[3]> ctrlpoints;
 int maxPoints = 100;
+int n = 30;
 int totalPoints = 4;
-GLfloat ctrlpoints[100][3] = {
+GLfloat ctrlpoints[4][3] = {
    { 0.1, 0.1, 0.0}, { 0.2, 0.8, 0.0}, 
    { 0.4, 0.1, 0.0}, { 0.8, 0.8, 0.0}};
 
@@ -51,7 +52,7 @@ void drawCurve() {
    glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 4, &ctrlpoints[0][0]); 
    /* Desenha a curva aproximada por n+1 pontos. */
    int i;
-   int n = 30;
+
    glColor3f(1.0, 1.0, 1.0);
    glBegin(GL_LINE_STRIP);
       for (i = 0; i <= n; i++){
@@ -73,7 +74,7 @@ void display(void)
    glPointSize(5.0);
    glColor3f(1.0, 1.0, 0.0);
    glBegin(GL_POINTS);
-      for (i = 0; i < totalPoints; i++) 
+      for (i = 0; i < 5; i++) 
          glVertex3fv(&ctrlpoints[i][0]);
    glEnd();
    
@@ -147,16 +148,17 @@ void mouseMove(int x, int y) {
 void keyPress(unsigned char key, int x, int y) {
    // std::cout << "Entrou" << std::endl;
    if (key == '+') {
-      ctrlpoints[totalPoints][0] = ctrlpoints[totalPoints - 1][0] + 0.01; 
-      ctrlpoints[totalPoints][1] = ctrlpoints[totalPoints - 1][1] + 0.01; 
-      ctrlpoints[totalPoints][2] = 0;
-      totalPoints += 1;
+      if (n < 100) {
+         n++;
+      }
 
       glutPostRedisplay();
    }
    if (key == '-') {
-      // gY += 0.01;
-      // glutPostRedisplay();
+      if (n > 2) {
+         n--;
+      }
+      glutPostRedisplay();
    }
 }
 
