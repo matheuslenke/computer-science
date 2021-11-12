@@ -1,12 +1,15 @@
+#ifdef __APPLE__
+#include <GLUT/glut.h>
+#else
 #include <GL/gl.h>
 #include <GL/glu.h>
-#include <stdlib.h>
 #include <GL/glut.h>
+#endif
+#include <stdlib.h>
 #include <iostream>
 #include <vector>
 #define TAMANHO_JANELA 500
 
-using namespace std;
 float size = 1.0;
 
 //Pontos de controle da Spline

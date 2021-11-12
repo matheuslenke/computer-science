@@ -1,16 +1,27 @@
-# the compiler: gcc for C program, define as g++ for C++
-CC = gcc
 CXX = g++
-# compiler flags:
-#  -g    adds debugging information to the executable file
-#  -Wall turns on most, but not all, compiler warnings
-CFLAGS  = -g -Wall
-LINKING = -lglut -lGL -lGLU
-TARGET = spline
+CXXFLAGS = -Wall -Werror -Wextra -pedantic -std=c++17
+LDFLAGS = -Wno-deprecated-declarations -std=c++17
+LBLIBS = 
 
-all:
-	$(CXX) $(CFLAGS) -o out $(TARGET).cpp $(LINKING)
-	./out
+OS := $(shell uname)
+ifeq ($(OS),Darwin)
+	LBLIBS += -framework OpenGL -framework GLUT -framework Cocoa 
+else
+	LBLIBS += -lGL -lGLU -lglut
+endif
+
+LIBSFOLDER = library
+SRC ?= *.cpp
+OBJ = $(SRC:.cc=.o)
+EXEC = run.app
+
+all: $(EXEC)
+
+$(EXEC): $(OBJ)
+	$(CXX) $(LDFLAGS) -o $@ $(OBJ) $(LBLIBS)
 
 clean:
-	$(RM) ./out
+	rm -rf *.o $(EXEC)
+
+run: all
+	./$(EXEC) 
