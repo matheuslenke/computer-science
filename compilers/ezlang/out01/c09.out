@@ -1,0 +1,16 @@
+5: program -> PROGRAM
+5: silly -> ID
+5: ; -> SEMI
+6: var -> VAR
+7: int -> INT
+7: xxxx -> ID
+7: ; -> SEMI
+8: int -> INT
+8: yyy -> ID
+8: ; -> SEMI
+9: int -> INT
+9: longidentifier -> ID
+9: ; -> SEMI
+10: begin -> BEGIN
+11: write -> WRITE
+LEXICAL ERROR (11): Unknown symbol "

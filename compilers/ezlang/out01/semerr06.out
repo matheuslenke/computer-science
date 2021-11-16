@@ -1,0 +1,14 @@
+5: program -> PROGRAM
+5: err -> ID
+5: ; -> SEMI
+6: var -> VAR
+7: string -> ID
+7: s -> ID
+7: ; -> SEMI
+8: bool -> ID
+8: b -> ID
+8: ; -> SEMI
+9: begin -> BEGIN
+10: s -> ID
+10: := -> ASSIGN
+LEXICAL ERROR (10): Unknown symbol "

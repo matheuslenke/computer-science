@@ -1,0 +1,7 @@
+4: program -> PROGRAM
+4: hello -> ID
+4: ; -> SEMI
+6: var -> VAR
+8: begin -> BEGIN
+9: write -> WRITE
+LEXICAL ERROR (9): Unknown symbol "
