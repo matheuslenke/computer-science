@@ -1,0 +1,44 @@
+* Passos para executar a solução do Lab03 no ANTLR:
+
+1) Edite as variáveis do Makefile como antes.
+
+2) Para rodar o ANTLR e compilar os arquivos gerados:
+
+   $ make
+
+3) Para executar o parser com um único arquivo de entrada:
+
+   $ make run FILE=arquivo_de_teste
+
+4) Se quiser rodar todos os casos de teste de uma vez, basta fazer:
+
+   $ make runall
+
+OBSERVAÇÕES:
+
+A partir deste ponto, o funcionamento do ANTLR começa a diferir bastante do
+flex/bison. Em particular, no bison praticamente tudo fica no arquivo '.y',
+principalmente a função 'main()', com as ações semânticas incluindo código no
+meio das regras da gramática.
+
+Embora isso também seja possível no ANTLR, a documentação recomenda que todo o
+código fique fora do arquivo da gramática. Basicamente o ANTLR entrega para
+gente a parse tree da entrada, e a partir daí tudo é feito através de
+caminhamentos nesta parse tree. As demais fases do compilador além das análises
+léxica/sintática precisam ser implementadas pelo programador.
+
+O ANTLR já provê classes padrão para ajudar no caminhamento da parse tree. Há
+duas formas gerais de implementação: listeners e visitors.
+
+Quando se usa um listener, o ANTLR já caminha automaticamente em profundidade
+(DFS) pela parse tree e vai chamando os métodos correspondentes ao tipo do nó
+atual no caminhamento. Por ser uma forma de caminhamento fixa, ela é mais
+limitante, e assim não vamos usar listeners aqui.
+
+A outra forma de se caminhar pela parse tree é com um visitor. Neste caso,
+ao chegar em um nó, o método correspondente do nó é chamado. Mas, ao contrário
+do listener, no visitor o programador é quem define como deve ser feito o
+caminhamento na subárvore subsequente, ficando livre para fazer a visitação
+dos filhos na ordem que quiser. Veja os comentários na classe
+checker.SemanticChecker para saber mais. Veja também os demais arquivos
+'.java' que foram criados para este lab.
