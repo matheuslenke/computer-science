@@ -1,0 +1,2 @@
+pi customer_name
+ sigma customer_street LIKE '%t' OR customer_city LIKE 'S%' customer

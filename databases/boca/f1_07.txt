@@ -1,0 +1,12 @@
+r1 = sigma positionOrder = 1 (results)
+r2 = sigma nationality = 'French' (constructors)
+
+r3 = r2 left join r1
+r4 = r3 left join (results.driverId = drivers.driverId) drivers
+r5 = r4 left join (results.raceId = races.raceId) races
+r6 = r5 left join (races.circuitId = circuits.circuitId) circuits
+
+pi constructors.name->Equipe,
+	concat(drivers.forename, concat(' ', drivers.surname))->Piloto,
+	circuits.name->Circuito,
+	races.year->Ano (r6)

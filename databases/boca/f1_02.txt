@@ -1,0 +1,3 @@
+pi drivers.nationality σ results.positionOrder ≤ 3
+( ( drivers join results.driverId = drivers.driverId results ) 
+join results.constructorId = constructors.constructorId constructors ) - ( pi nationality constructors )

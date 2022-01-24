@@ -1,0 +1,4 @@
+pi b.branch_name
+ sigma c.branch_city = 'Brooklyn'
+  (rho b branch join b.assets > c.assets
+   rho c branch)

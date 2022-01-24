@@ -1,0 +1,4 @@
+pi b.customer_name
+ sigma b.customer_city != c.customer_city
+  (rho b customer join b.customer_street = c.customer_street
+   rho c customer)
