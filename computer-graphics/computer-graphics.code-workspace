@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "../../../../Downloads/codigo - vazio"
+		},
+		{
+			"path": "../../2021-2/CG/Computer-Graphics-Project2D"
+		},
+		{
+			"path": "../../2021-2/CG/TesteLegs"
 		}
 	],
 	"settings": {
@@ -82,7 +88,10 @@
 			"vector": "cpp",
 			"*.tcc": "cpp",
 			"memory_resource": "cpp",
-			"stop_token": "cpp"
-		}
+			"stop_token": "cpp",
+			"__bits": "cpp",
+			"list": "cpp"
+		},
+		"discord.enabled": true
 	}
 }
