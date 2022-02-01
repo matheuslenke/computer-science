@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "../../2021-2/Compilers/Go-Compiler"
+		},
+		{
+			"path": "../../../../Downloads/CC_Lab04_Tarefa"
+		},
+		{
+			"path": "../../../../Downloads/CC_Lab04_Tarefa_Antlr"
 		}
 	],
 	"settings": {}

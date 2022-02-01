@@ -5,7 +5,7 @@ JAVAC=javac
 
 # Eu uso ROOT como o diretório raiz para os meus labs.
 YEAR=$(shell pwd | grep -o '20..-.')
-ROOT=/Users/matheuslenke/Developer/College/computer-science/compilers/Lab03/antlr
+ROOT=/Users/matheuslenke/Developer/College/computer-science/compilers/Lab04/ezlang-antlr
 
 ANTLR_PATH=/usr/local/lib/antlr/antlr-4.9.3-complete.jar
 CLASS_PATH_OPTION=-cp .:$(ANTLR_PATH)
