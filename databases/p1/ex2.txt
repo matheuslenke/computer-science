@@ -1,0 +1,9 @@
+r1 = gamma races.year; count(races.year)->Corridas (races)
+r2 = rho races.year->y1, Corridas->C1 (r1)
+r3 = rho races.year->y2, Corridas->C2 (r1)
+r4 = r2 natural join r3
+r5 = sigma C1 < C2 (r4)
+r6 = pi y1->Temporada, C1->Corridas (r5)
+r7 = rho races.year->Temporada, Corridas->Corridas (r1)
+r8 = r7 - r6
+pi races.Temporada->Temporada, Corridas (r8)

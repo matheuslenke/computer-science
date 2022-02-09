@@ -1,0 +1,31 @@
+No caso, podemos fazer com que o atributo XXX seja um atributo UNIQUE, caso não seja 
+desejado tornar o atributo XXX chave primária. Vamos pegar o seguinte exemplo,
+entre uma tabela Usuários e uma tabela Mensagens, representadas da seguinte forma:
+
+CREATE TABLE Usuarios (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(255),
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255),
+    CONSTRAINT users_pk PRIMARY KEY (id)
+);
+
+Com essa tabela, podemos perceber que o id é a chave primária da mesmo, e
+temos um atributo UNIQUE, o email do usuário.
+Isso impede que dois usuários tenham o mesmo email, mesmo que esta não seja uma chave
+primária da tabela. Agora, na tabela Mensagens:
+
+CREATE TABLE Mensagens (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    conteudo VARCHAR(255),
+    email_de_envio VARCHAR(255) NOT NULL,
+    status INT,
+    FOREIGN KEY (email_de_envio) REFERENCES Usuarios(email)
+);
+
+A coluna "email_de_envio" é na verdade uma chave estrangeira referente à coluna "email"
+da tabela Usuarios, e essa construção é válida pois a coluna "email" é única. 
+Isso significa que o valor dela é único dentre todos os valores inseridos na tabela,
+uma propriedade que a chave primária também possui, mesmo que esta tabela não seja indexada
+pela coluna email. Além disso, o caracterizador UNIQUE funciona para mais de um tipo
+de coluna, que neste caso seria VARCHAR.

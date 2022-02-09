@@ -1,0 +1,6 @@
+r1 = results left join constructors
+r2 = sigma positionOrder <= 3 (r1)
+r3 = pi constructors.name (r2)
+r4 = pi constructors.name (constructors)
+r5 = r4 - r3
+pi constructors.name (r5)
