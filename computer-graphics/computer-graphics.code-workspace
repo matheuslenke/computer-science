@@ -10,7 +10,16 @@
 			"path": "../../2021-2/CG/Computer-Graphics-Project2D"
 		},
 		{
-			"path": "../../2021-2/CG/TesteLegs"
+			"path": "Lab05/soldado"
+		},
+		{
+			"path": "Lab05/opengl3d"
+		},
+		{
+			"path": "Lab05/lightToroide"
+		},
+		{
+			"path": "Lab06/Terra-Sol"
 		}
 	],
 	"settings": {
@@ -92,6 +101,8 @@
 			"__bits": "cpp",
 			"list": "cpp"
 		},
-		"discord.enabled": true
+		"discord.enabled": true,
+		"editor.showDeprecated": false,
+		"editor.suggest.showDeprecated": false
 	}
 }
