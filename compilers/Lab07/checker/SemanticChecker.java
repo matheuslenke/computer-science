@@ -64,17 +64,17 @@ import typing.Type;
  * automaticamente e já possui métodos padrão aonde o comportamento
  * é só visitar todos os filhos. Por conta disto, basta sobreescrever
  * os métodos que a gente quer alterar. Neste caso, todos foram sobreescritos.
- *
- * No laboratório anterior, foi usado Type no tipo genérico do
+ * 
+ * No laboratório anterior, foi usado Type no tipo genérico do 
  * EZParserBaseVisitor porque a gente só estava fazendo uma verificação
- * simples dos tipos primitivos. Agora o tipo declarado é AST, pois o
+ * simples dos tipos primitivos. Agora o tipo declarado é AST, pois o 
  * analisador semântico também realiza a construção da AST na mesma passada.
  * Assim, se a análise semântica (uso de variáveis e tipos) terminar sem erros,
  * então temos no final uma AST que representa o programa de entrada.
  * Em linguagens mais complexas é provável que sejam necessárias mais passadas,
  * por exemplo, uma para análise semântica e outra para a construção da AST.
  * Neste caso, talvez você tenha de implementar dois visitadores diferentes.
- *
+ * 
  * Lembre que o caminhamento pela Parse Tree é top-down. Assim, é preciso sempre
  * visitar os filhos de um nó primeiro para construir as subárvores dos filhos.
  * No Bison isso já acontecia automaticamente porque o parsing lá é bottom-up e
@@ -83,12 +83,12 @@ import typing.Type;
  */
 public class SemanticChecker extends EZParserBaseVisitor<AST> {
 
-	StrTable st = new StrTable();   // Tabela de strings.
-    VarTable vt = new VarTable();   // Tabela de variáveis.
-
+	public final StrTable st = new StrTable();   // Tabela de strings.
+    public final VarTable vt = new VarTable();   // Tabela de variáveis.
+    
     Type lastDeclType;  // Variável "global" com o último tipo declarado.
-
-    AST root; // Nó raiz da AST sendo construída.
+    
+    private AST root; // Nó raiz da AST sendo construída.
 
     // Testa se o dado token foi declarado antes.
     // Se sim, cria e retorna um nó de 'var use'.
@@ -120,16 +120,16 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
         idx = vt.addVar(text, line, lastDeclType);
         return new AST(VAR_DECL_NODE, idx, lastDeclType);
     }
-
+    
     // ----------------------------------------------------------------------------
     // Type checking and inference.
-
+    
     private static void typeError(int lineNo, String op, Type t1, Type t2) {
     	System.out.printf("SEMANTIC ERROR (%d): incompatible types for operator '%s', LHS is '%s' and RHS is '%s'.\n",
     			lineNo, op, t1.toString(), t2.toString());
     	System.exit(1);
     }
-
+   
     private static void checkBoolExpr(int lineNo, String cmd, Type t) {
         if (t != BOOL_TYPE) {
             System.out.printf("SEMANTIC ERROR (%d): conditional expression in '%s' is '%s' instead of '%s'.\n",
@@ -137,37 +137,42 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
             System.exit(1);
         }
     }
-
+    
     // ----------------------------------------------------------------------------
-
+    
     // Exibe o conteúdo das tabelas em stdout.
-    void printTables() {
+    public void printTables() {
         System.out.print("\n\n");
         System.out.print(st);
         System.out.print("\n\n");
     	System.out.print(vt);
     	System.out.print("\n\n");
     }
-
+    
     // Exibe a AST no formato DOT em stderr.
-    void printAST() {
+    public void printAST() {
     	AST.printDot(root, vt);
     }
-
+    
+    // Retorna a AST construída ao final da análise.
+    public AST getAST() {
+    	return this.root;
+    }
+  
     // ----------------------------------------------------------------------------
     // Visitadores.
-
+    
     // Visita a regra program: PROGRAM ID SEMI vars_sect stmt_sect
     @Override
 	public AST visitProgram(ProgramContext ctx) {
     	// Visita recursivamente os filhos para construir a AST.
     	AST varsSect = visit(ctx.vars_sect());
     	AST stmtSect = visit(ctx.stmt_sect());
-    	// Como esta é a regra inicial, chegamos na raiz da AST.
+    	// Como esta é a regra inicial, chegamos na raíz da AST.
     	this.root = AST.newSubtree(PROGRAM_NODE, NO_TYPE, varsSect, stmtSect);
 		return this.root;
 	}
-
+    
     // Visita a regra vars_sect: VAR var_decl*
     @Override
 	public AST visitVars_sect(Vars_sectContext ctx) {
@@ -196,7 +201,7 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
     	// ignora o valor de retorno.
     	return null;
     }
-
+	
 	// Visita a regra type_spec: INT
 	@Override
 	public AST visitIntType(EZParser.IntTypeContext ctx) {
@@ -205,7 +210,7 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
     	// ignora o valor de retorno.
 		return null;
 	}
-
+	
 	// Visita a regra type_spec: REAL
 	@Override
 	public AST visitRealType(EZParser.RealTypeContext ctx) {
@@ -214,7 +219,7 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
     	// ignora o valor de retorno.
 		return null;
     }
-
+	
 	// Visita a regra type_spec: STRING
 	@Override
 	public AST visitStrType(EZParser.StrTypeContext ctx) {
@@ -223,7 +228,7 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
     	// ignora o valor de retorno.
 		return null;
 	}
-
+    
     // Visita a regra var_decl: type_spec ID SEMI
     @Override
     public AST visitVar_decl(EZParser.Var_declContext ctx) {
@@ -245,7 +250,7 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
     	return node;
 	}
 
-    // Visita a regra stmt para todos os possíveis tipos.
+    // Visita a regra stmt para todos os possíveis tipos. 
     // Esse método não precisava ser sobreescrito, mas era o único
     // que ficou faltando... :P
 	@Override
@@ -264,17 +269,17 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 		// Faz as verificações de tipos.
 		return checkAssign(idToken.getLine(), idNode, exprNode);
 	}
-
+	
 	// Método auxiliar criado só para separar melhor a parte de visitador
 	// da parte de análise semântica.
     private static AST checkAssign(int lineNo, AST l, AST r) {
     	Type lt = l.type;
     	Type rt = r.type;
-
+    	
         if (lt == BOOL_TYPE && rt != BOOL_TYPE) typeError(lineNo, ":=", lt, rt);
         if (lt == STR_TYPE  && rt != STR_TYPE)  typeError(lineNo, ":=", lt, rt);
         if (lt == INT_TYPE  && rt != INT_TYPE)  typeError(lineNo, ":=", lt, rt);
-
+        
         if (lt == REAL_TYPE) {
         	if (rt == INT_TYPE) {
         		r = Conv.createConvNode(I2R, r);
@@ -285,7 +290,7 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 
         return AST.newSubtree(ASSIGN_NODE, NO_TYPE, l, r);
     }
-
+	
 	// Visita a regra if_stmt: IF expr THEN stmt+ (ELSE stmt+)? END
 	@Override
 	public AST visitIf_stmt(If_stmtContext ctx) {
@@ -294,17 +299,17 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 		// dos dois fechos 'stmt+', pois o ANTLR não faz distinção entre eles.
 		// Assim, comandos dos blocos de THEN e ELSE ficam todos na mesma
 		// lista de 'stmt'. Pelo menos eles ficam em ordem.
-
+		
 		// Uma forma mais simples de resolver esse problema seria criar
 		// dois novos não-terminais como
 		// then_part: stmt+
 		// else_part: stmt+
 		// Assim, daria para identificar e usar as partes com métodos diferentes.
-
-		// Preferi não fazer desse jeito porque acho que vocês vão ter casos
+		
+		// Preferi não fazer desse jeito porque acho que vocês vão ter casos 
 		// parecidos nas gramáticas, e assim dá para aproveitar e mostar um pouco
 		// da magia negra que dá para fazer com o ANTLR... :P
-
+		
 		// Analisa a expressão booleana.
 		AST exprNode = visit(ctx.expr());
 		checkBoolExpr(ctx.IF().getSymbol().getLine(), "if", exprNode.type);
@@ -320,14 +325,14 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 	    		AST child = visit(ctx.stmt(i));
 	    		thenNode.addChild(child);
 			}
-			return AST.newSubtree(IF_NODE, NO_TYPE, exprNode, thenNode);
+			return AST.newSubtree(IF_NODE, NO_TYPE, exprNode, thenNode); 
 		} else {
 			// Caso em que existe um bloco de ELSE. Aí precisamos separar
 			// os 'stmt' entre os blocos de THEN e ELSE. Vamos usar o
 			// Token do ELSE para fazer essa separação. Mas para isso
 			// precisamos identificar o índice do ELSE na lista de todos
 			// os filhos da Parse Tree.
-
+			
 			// Faz uma busca pelo token na lista de filhos.
 			TerminalNode elseToken = ctx.ELSE();
 			int elseIdx = -1;
@@ -344,21 +349,21 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 			// IF expr THEN
 			// ou seja, há 3 símbolos antes do primeiro bloco de 'stmt+'.
 			int thenEnd = elseIdx - 3;
-
+			
 			// Cria o nó com o bloco de comandos do THEN.
 			AST thenNode = AST.newSubtree(BLOCK_NODE, NO_TYPE);
 			for (int i = 0; i < thenEnd; i++) {
 	    		AST child = visit(ctx.stmt(i));
 	    		thenNode.addChild(child);
 			}
-
+			
 			// Cria o nó com o bloco de comandos do ELSE.
 			AST elseNode = AST.newSubtree(BLOCK_NODE, NO_TYPE);
 			for (int i = thenEnd; i < ctx.stmt().size(); i++) {
 	    		AST child = visit(ctx.stmt(i));
 	    		elseNode.addChild(child);
 			}
-
+						
 			return AST.newSubtree(IF_NODE, NO_TYPE, exprNode, thenNode, elseNode);
 		}
 	}
@@ -369,21 +374,21 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 		AST idNode = checkVar(ctx.ID().getSymbol());
 		return AST.newSubtree(READ_NODE, NO_TYPE, idNode);
 	}
-
+	
 	// Visita a regra repeat_stmt: REPEAT stmt+ UNTIL expr
 	@Override
 	public AST visitRepeat_stmt(Repeat_stmtContext ctx) {
 		// Analisa a expressão booleana.
 		AST exprNode = visit(ctx.expr());
 		checkBoolExpr(ctx.UNTIL().getSymbol().getLine(), "repeat", exprNode.type);
-
+		
 		// Constrói o bloco de código do loop.
 		AST blockNode = AST.newSubtree(BLOCK_NODE, NO_TYPE);
     	for (int i = 0; i < ctx.stmt().size(); i++) {
     		AST child = visit(ctx.stmt(i));
     		blockNode.addChild(child);
     	}
-
+    	
     	return AST.newSubtree(REPEAT_NODE, NO_TYPE, blockNode, exprNode);
 	}
 
@@ -400,12 +405,12 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 		// Visita recursivamente as duas subexpressões.
 		AST l = visit(ctx.expr(0));
 		AST r = visit(ctx.expr(1));
-
+		
 		// Faz a unificação dos tipos para determinar o tipo resultante.
 		Type lt = l.type;
 		Type rt = r.type;
 		Unif unif = lt.unifyOtherArith(rt);
-
+		
 		if (unif.type == NO_TYPE) {
 			typeError(ctx.op.getLine(), ctx.op.getText(), lt, rt);
 		}
@@ -414,7 +419,7 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 		// estrutura de conversão.
 		l = Conv.createConvNode(unif.lc, l);
 		r = Conv.createConvNode(unif.rc, r);
-
+		
 		// Olha qual é o operador e cria o nó correspondente na AST.
 		if (ctx.op.getType() == EZParser.TIMES) {
 			return AST.newSubtree(TIMES_NODE, unif.type, l, r);
@@ -422,14 +427,14 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 			return AST.newSubtree(OVER_NODE, unif.type, l, r);
 		}
 	}
-
+	
 	// Visita a regra expr: expr op=(PLUS | MINUS) expr
 	@Override
 	public AST visitPlusMinus(PlusMinusContext ctx) {
 		// Visita recursivamente as duas subexpressões.
 		AST l = visit(ctx.expr(0));
 		AST r = visit(ctx.expr(1));
-
+		
 		// Faz a unificação dos tipos para determinar o tipo resultante.
 		Type lt = l.type;
 		Type rt = r.type;
@@ -440,16 +445,16 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 		} else {
 			unif = lt.unifyOtherArith(rt);
 		}
-
+		
 		if (unif.type == NO_TYPE) {
 			typeError(ctx.op.getLine(), ctx.op.getText(), lt, rt);
 		}
-
+		
 		// Cria os nós de conversão que forem necessários segundo a
 		// estrutura de conversão.
 		l = Conv.createConvNode(unif.lc, l);
 		r = Conv.createConvNode(unif.rc, r);
-
+		
 		// Olha qual é o operador e cria o nó correspondente na AST.
 		if (ctx.op.getType() == EZParser.PLUS) {
 			return AST.newSubtree(PLUS_NODE, unif.type, l, r);
@@ -457,19 +462,19 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 			return AST.newSubtree(MINUS_NODE, unif.type, l, r);
 		}
 	}
-
+	
 	// Visita a regra expr: expr op=(EQ | LT) expr
 	@Override
 	public AST visitEqLt(EqLtContext ctx) {
 		// Visita recursivamente as duas subexpressões.
 		AST l = visit(ctx.expr(0));
 		AST r = visit(ctx.expr(1));
-
+		
 		// Faz a unificação dos tipos para determinar o tipo resultante.
 		Type lt = l.type;
 		Type rt = r.type;
 		Unif unif = lt.unifyComp(rt);
-
+		
 		if (unif.type == NO_TYPE) {
 			typeError(ctx.op.getLine(), ctx.op.getText(), lt, rt);
 		}
@@ -478,7 +483,7 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 		// estrutura de conversão.
 		l = Conv.createConvNode(unif.lc, l);
 		r = Conv.createConvNode(unif.rc, r);
-
+		
 		// Olha qual é o operador e cria o nó correspondente na AST.
 		if (ctx.op.getType() == EZParser.EQ) {
 			return AST.newSubtree(EQ_NODE, unif.type, l, r);
@@ -493,7 +498,7 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 		// Propaga o nó criado para a expressão.
 		return visit(ctx.expr());
 	}
-
+	
 	// Visita a regra expr: TRUE
 	@Override
 	public AST visitExprTrue(ExprTrueContext ctx) {
@@ -515,7 +520,7 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 		int intData = Integer.parseInt(ctx.getText());
 		return new AST(INT_VAL_NODE, intData, INT_TYPE);
 	}
-
+	
 	// Visita a regra expr: REAL_VAL
 	@Override
 	public AST visitExprRealVal(ExprRealValContext ctx) {
@@ -539,5 +544,5 @@ public class SemanticChecker extends EZParserBaseVisitor<AST> {
 		// Fim da recursão, retorna um nó de 'var use'.
 		return checkVar(ctx.ID().getSymbol());
 	}
-
+	
 }

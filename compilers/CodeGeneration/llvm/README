@@ -1,0 +1,7 @@
+- Para rodar:
+
+$ lli hello.ll 
+Hello, World!
+
+- Veja os comandos da LLVM em:
+https://llvm.org/docs/LangRef.html#instruction-reference

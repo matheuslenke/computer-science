@@ -1,0 +1,16 @@
+Exemplo de um programa gerado para MIPS.
+
+- calculadora.py: o programa fonte de entrada
+- calculadora.asm: o código Assembly para MIPS gerado.
+
+* Para rodar:
+
+- Abrir o simulador MARS com
+  java -jar Mars4_5.jar
+  e usar a GUI.
+OU
+- Executar pelo terminal com o comando
+  java -jar Mars4_5.jar sm calculadora.asm
+
+Baixe o MARS em:
+http://courses.missouristate.edu/kenvollmar/mars/

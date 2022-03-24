@@ -1,0 +1,17 @@
+01-print.py: é a linguagem de entrada
+01-print.j: é a linguagem alvo
+
+Para criar o arquivo .class com o bytecode, use a ferramenta Jasmin:
+
+http://jasmin.sourceforge.net/
+
+Para rodar o "assembler":
+
+$ java -jar jasmin.jar 01-print.j
+
+Para executar o programa:
+
+$ java pythontest
+--- EXEMPLO 01: PRINT ---
+Hello, World!
+15

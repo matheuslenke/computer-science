@@ -11,9 +11,13 @@
 		},
 		{
 			"path": "../../../../Downloads/CC_Lab04_Tarefa_Antlr"
+		},
+		{
+			"path": "Lab06"
 		}
 	],
 	"settings": {
-		"java.configuration.updateBuildConfiguration": "automatic"
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"java.project.sourcePaths": []
 	}
 }
