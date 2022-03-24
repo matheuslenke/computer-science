@@ -1,0 +1,19 @@
+
+queryAtendimentos = 
+sigma Atendimento.CodCidade=Cidade.CodCidade, Atendimento.SiglaAero=Aeroporto.SiglaAero
+(pi Cidade.CodCidade, Aeroporto.SiglaAero, Atendimento.CodCidade, Atendimento.SiglaAero (Atendimento natural join Aeroporto natural join Cidade))
+
+queryPaises = 
+pi CodPais
+(sigma NomePais='Brasil'(Pais))
+
+pi *
+(queryPaises - queryAtendimentos)
+
+
+SELECT CodPais FROM Pais WHERE NomePais='Brasil'
+
+
+SELECT * FROM Atendimento WHERE CodCidade=Cidade.CodCidade AND SiglaAero=Aeroporto.SiglaAero
+
+SELECT * FROM Atendimento WHERE CodCidade=Cidade.CodCidade AND SiglaAero=Aeroporto.SiglaAero
